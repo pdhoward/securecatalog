@@ -26,8 +26,6 @@ const App= () => {
 		
 	}, [])
 
-	console.log(`----------------inside of app-----------`)
-	console.log(API.getCurrentUser())
 	
 	return (
 		<div className='App container'>		
@@ -39,7 +37,7 @@ const App= () => {
 				<Route path="/machine" element = { currentUser
 						? <Machine profile={currentUser} />
 						: <Navigate to="/login" /> } />
-				<Route path="/" component={Home} />
+				<Route path="/" element={<Home />} />
 			</Routes>			
 
 		</div>

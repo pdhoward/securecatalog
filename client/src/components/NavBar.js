@@ -2,9 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const NavBar = ({currentUser}) => {
-	console.log(`-----nav bar----`)
+	
+	console.log(`-------inside nav bar--------`)
+	console.log(currentUser)
 	let isCurrentUser = true
-	if (currentUser.currentUser == null) isCurrentUser = false
+	if (currentUser?.currentUser == null) isCurrentUser = false
 	console.log(isCurrentUser)
 	return (
 		<div className='NavBar'>
