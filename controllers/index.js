@@ -30,10 +30,12 @@ module.exports = {
 
 	// this function is behind the firewall
 	show: async (req, res) => {
+		console.log(`------------getting joke-------------`)
 		let userProfile = jwtDecode(req.params.id)		
 		let joke = jokes[Math.floor(Math.random() * jokes.length)]
 		// note we execute .lean() to convert a mongoose document to js doc
-		let doc = await User.find({email: userProfile.email}).lean()		
+		let doc = await User.find({email: userProfile.email}).lean()
+		console.log(doc)
 		doc[0].joke = joke						
 		res.json(doc)
 	},

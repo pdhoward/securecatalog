@@ -8,13 +8,10 @@ const Machine = ({profile}) => {
 	const [joke, setJoke] = useState("")
 	const [password, setPassword] = useState("")
 
-	console.log('inside of machine')
-	console.log(profile)
-
 	const handleClick = (token) => {
 		API.getSecret(token).then(result => {
 			console.log(result.data)
-			if (result.data.message = "Invalid Token") {
+			if (result.data.message == "Invalid Token") {
 				setJoke('No Joke - invalid token')
 				return}
 			if (result.data[0].joke) setJoke(result.data[0].joke)
@@ -35,7 +32,7 @@ const Machine = ({profile}) => {
     				</p>
 				</div>
 				
-				<button onClick={() => handleClick(profile.token)}>Get Secret Joke</button>
+				<button onClick={() => handleClick(profile.currentUser.token)}>Get Secret Joke</button>
 				{joke ? <Card
 			 	 	password = {password}
 			 	 	joke = {joke}			  
