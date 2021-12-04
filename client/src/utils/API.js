@@ -3,6 +3,8 @@ import jwtDecode from 'jwt-decode'
 
 const API = {
 	getToken: function() {
+		console.log(`------get token------`)
+		console.log(localStorage.getItem('token'))
 		return localStorage.getItem('token')
 	},
 	setToken: function(token) {

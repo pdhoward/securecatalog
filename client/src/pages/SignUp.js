@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom"
 import API from '../utils/API'
 
 
 function SignUp({onSignUpSuccess, history}) {
 	
 	const [fields, setFields] = useState({ name: '', email: '', password: ''})
+
+	let navigate = useNavigate();
 
 	const onInputChange = (evt) => {
 		setFields({...fields, [evt.target.name]: evt.target.value })
@@ -16,7 +19,7 @@ function SignUp({onSignUpSuccess, history}) {
 			setFields({...fields, name: '', email: '', password: '' })
 			if(user) {
 				onSignUpSuccess(user)
-				history.push('/')
+				navigate('/', {replace: true})
 			}
 		})
 	}	

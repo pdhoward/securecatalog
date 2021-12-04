@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom"
 import API from '../utils/API'
 
 function LogIn({onLoginSuccess, history}) {
 	
 	const [fields, setFields] = useState({ email: '', password: '', isValid: true});
+
+	let navigate = useNavigate()
 
 	const onInputChange = (evt) => {
 		setFields({...fields, [evt.target.name]: evt.target.value })		
@@ -12,10 +15,10 @@ function LogIn({onLoginSuccess, history}) {
 	const onFormSubmit = (evt) => {
 		evt.preventDefault()
 		API.logIn(fields).then(user => {		
-			if(user) {
+			if (user) {
 				onLoginSuccess(user)
 				setFields({...fields, email: '', password: '', isValid: true })
-				history.push('/')				
+				navigate('/', {replace: true})				
 			} else {
 				setFields({...fields, email: '', password: '', isValid: false })
 			}

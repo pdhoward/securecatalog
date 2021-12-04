@@ -1,21 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-const NavBar = (props) => {
+const NavBar = ({currentUser}) => {
+	console.log(`-----nav bar----`)
+	let isCurrentUser = true
+	if (currentUser.currentUser == null) isCurrentUser = false
+	console.log(isCurrentUser)
 	return (
 		<div className='NavBar'>
-			<Link to="/">Home</Link>
-			{props.currentUser
+			<NavLink to="/">Home</NavLink>
+			{isCurrentUser
 				? (
 					<span>
-						<Link to="/machine">Machine</Link>
-						<Link to="/logout">Log Out</Link>
+						<NavLink to="/machine">Machine</NavLink>
+						<NavLink to="/logout">Log Out</NavLink>
 					</span>
 				)
 				: (
 					<span>
-						<Link to="/login">Log In</Link>
-						<Link to="/signup">Sign Up</Link>
+						<NavLink to="/login">Log In</NavLink>
+						<NavLink to="/signup">Sign Up</NavLink>
 					</span>
 				)
 			}
